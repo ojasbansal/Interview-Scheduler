@@ -1,0 +1,26 @@
+<div class="container mt-4">
+<h3>Interview Start Time: <%= @interview.starttime %></h3>
+<h3>Interview End Time: <%= @interview.endtime %></h3>
+<br />
+<h4>Partipant Details:</h4>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">User ID</th>
+      <th scope="col">User Name</th>
+      <th scope="col">User Email</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+    <td><%= user.id %></td>
+    <td><%= user.user_name %></td>
+    <td><%= user.user_email %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to "Edit this Interview", edit_interview_path(@interview),:class => "badge badge-dark" %>
+<%= link_to "Back to Home Page", interviews_path,:class => "badge badge-dark" %>
+</div>
