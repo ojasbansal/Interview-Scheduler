@@ -13,7 +13,7 @@
     <tr>
     <td><%= interview.id %></td>
     <td><%= interview.users.count %></td>
-    <td><%= interview.created_at.to_time.to_datetime %></td>
+    <td><%= interview.starttime %></td>
     <td><%= interview.endtime %></td>
     <td><%= link_to 'Show', interview_path(interview), :class => "badge badge-dark" %></td>
     <td><%= link_to 'Edit', edit_interview_path(interview), :class => "badge badge-dark" %></td>

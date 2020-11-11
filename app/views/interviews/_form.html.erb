@@ -1,0 +1,34 @@
+<div class="container">
+  <div class = "row justify-content-center">
+    <div class = "col-10">
+      <%= render "shared/errors", obj: @interview %>
+      <%= form_with(model: @interview, local: true) do |f| %>
+        <div class="form-group row">
+          <%= f.label :StartTime, class: "col-2 col-form-label" %><br />
+          <div class="col-10">
+            <%= f.datetime_field :startTime,class: "form-control shadow rounded" %><br />
+          </div>
+        </div>
+        <div class="form-group row">
+          <%= f.label :EndTime,class: "col-2 col-form-label" %><br />
+            <div div class="col-10">
+              <%= f.datetime_field :endtime, class: "form-control shadow rounded" %><br />
+            </div>
+        </div>
+        <div class="form-group row">
+          <%= f.label :SelectUsers, class: "col-2 col-form-label" %>
+          <div class="col-10">
+            <%= f.collection_select(:user_ids, User.all, :id, :user_name,
+              {prompt: "Select the Users below(Press ctrl for multiple selections)"},{multiple: true, class: "custom-select shadow rounded" ,size: 3}) %>
+          </div>
+        </div>
+        <div class="form-group row justify-content-center">
+          <%= f.submit class: "btn btn-success"%>
+        </div>
+      <%end%>
+    </div>
+    <div class="mb-3">
+      <%= link_to '[Cancel and return to home page ]', interviews_path,class: "text-info" %>
+    </div>
+  </div>
+</div>
