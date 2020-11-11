@@ -1,0 +1,23 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Users Count</th>
+      <th scope="col">Starttime</th>
+      <th scope="col">Endtime</th>
+      <th scope="col" colspan = "2" class = "text-center">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @interviews.each do |interview| %>
+    <tr>
+    <td><%= interview.id %></td>
+    <td><%= interview.users.count %></td>
+    <td><%= interview.created_at.to_time.to_datetime %></td>
+    <td><%= interview.endtime %></td>
+    <td><%= link_to 'Show', interview_path(interview), :class => "badge badge-dark" %></td>
+    <td><%= link_to 'Edit', edit_interview_path(interview), :class => "badge badge-dark" %></td>
+    </tr>
+  <% end %>
+  </tbody>
+  </table>
