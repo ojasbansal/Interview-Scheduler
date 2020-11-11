@@ -17,6 +17,7 @@
     <td><%= interview.endtime.strftime("%B %e, %Y at %I:%M %p") %></td>
     <td><%= link_to 'Show', interview_path(interview), :class => "badge badge-dark" %></td>
     <td><%= link_to 'Edit', edit_interview_path(interview), :class => "badge badge-dark" %></td>
+    <td><%= link_to 'Delete', interview_path(interview), method: :delete, :class => "badge badge-dark" %></td>
     </tr>
   <% end %>
   </tbody>

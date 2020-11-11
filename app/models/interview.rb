@@ -1,12 +1,18 @@
 class ModelValidator < ActiveModel::Validator
   def validate(record)
     return if record.starttime == nil || record.endtime == nil
+
     if record.starttime > record.endtime
       record.errors[:base] << "Interview Endtime should be after Start time"
     end
 
     if record.starttime < Time.now
       record.errors[:base] << "Interview Must be Scheduled for the future."
+    end
+
+    # Maximum Time Limit is 5 hours, can update accordingly
+    if record.endtime - record.starttime > 18000
+      record.errors[:base] << "Maximum Interview Duration allowed is 5 hours."
     end
 
     if !(checkUsersCount record)

@@ -9,7 +9,6 @@ class InterviewsController < ApplicationController
 
   def create
     @interview = Interview.new(interview_params)
-    
     if @interview.save
       redirect_to interviews_path
     else
@@ -34,6 +33,12 @@ class InterviewsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @interview = Interview.find(params[:id])
+    @interview.destroy
+    redirect_to interviews_path
   end
 
   private
