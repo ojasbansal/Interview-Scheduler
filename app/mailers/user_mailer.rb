@@ -5,6 +5,7 @@ class UserMailer < ApplicationMailer
     mail(to: @user.user_email, subject: 'Interview Scheduled')
   end
 
+  # Needs to be changed
   def cancel_interview_email
     mail(to: @user.user_email, subject: 'Interview Scheduled')
   end

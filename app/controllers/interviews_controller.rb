@@ -13,7 +13,7 @@ class InterviewsController < ApplicationController
     @interview = Interview.new(interview_params)
     if @interview.save
       flash[:notice] = "Interview was created successfully"
-      send_email @interview
+      #send_email @interview
       redirect_to interviews_path
     else
       render 'new'
@@ -37,7 +37,6 @@ class InterviewsController < ApplicationController
   end
 
   def destroy
-    byebug
     @interview.destroy
     redirect_to interviews_path
   end
