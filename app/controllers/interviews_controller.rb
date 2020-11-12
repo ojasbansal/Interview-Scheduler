@@ -1,4 +1,6 @@
 class InterviewsController < ApplicationController
+  before_action :set_interview, only: [:show, :edit, :update, :destroy]
+
   def index
     @interviews = Interview.all
   end
@@ -19,16 +21,13 @@ class InterviewsController < ApplicationController
   end
 
   def edit
-    @interview = Interview.find(params[:id])
   end
 
   def show
-    @interview = Interview.find(params[:id])
     @users = @interview.users
   end
 
   def update
-    @interview = Interview.find(params[:id])
     if @interview.update(interview_params)
       flash[:notice] = "Interview was updated successfully"
       redirect_to interviews_path
@@ -38,7 +37,7 @@ class InterviewsController < ApplicationController
   end
 
   def destroy
-    @interview = Interview.find(params[:id])
+    byebug
     @interview.destroy
     redirect_to interviews_path
   end
@@ -47,6 +46,10 @@ class InterviewsController < ApplicationController
 
   def interview_params
     params.require(:interview).permit(:starttime,:endtime, user_ids: [])
+  end
+
+  def set_interview
+    @interview = Interview.find(params[:id])
   end
 
   def send_email interview
