@@ -10,6 +10,8 @@ class InterviewsController < ApplicationController
   def create
     @interview = Interview.new(interview_params)
     if @interview.save
+      flash[:notice] = "Interview was created successfully"
+      send_email @interview
       redirect_to interviews_path
     else
       render 'new'
@@ -47,5 +49,10 @@ class InterviewsController < ApplicationController
     params.require(:interview).permit(:starttime,:endtime, user_ids: [])
   end
 
+  def send_email interview
+    interview.users.each do |user|
+      UserMailer.with(user: user, interview: @interview).interview_email.deliver_now
+    end  
+  end
 end
 

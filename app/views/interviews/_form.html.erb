@@ -18,7 +18,7 @@
         <div class="form-group row">
           <%= f.label :SelectUsers, class: "col-2 col-form-label" %>
           <div class="col-10">
-            <%= f.collection_select(:user_ids, User.all, :id, :user_name,
+            <%= f.collection_select(:user_ids, User.all, :id, :user_email,
               {prompt: "Select the Users below(Press ctrl for multiple selections)"},{multiple: true, class: "custom-select shadow rounded" ,size: 3}) %>
           </div>
         </div>
