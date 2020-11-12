@@ -53,8 +53,8 @@ class ModelValidator < ActiveModel::Validator
 end
 
 class Interview < ApplicationRecord
-  has_many :interview_users
-  has_many :users, through: :interview_users 
+  has_many :interview_users, dependent: :destroy
+  has_many :users, through: :interview_users, dependent: :destroy
   validates :starttime, :endtime, presence: true
   validates_with ModelValidator
 end
